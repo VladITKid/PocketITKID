@@ -312,7 +312,7 @@ const bottomNavBtnsArray = Array.from(document.querySelectorAll('.bottom-nav__bt
         // Подвал
         changeTextContent("Let's stay connected!", [document.querySelector(".footer__title--l")]);
         changeTextContent("Write me", [Array.from(document.querySelectorAll('.footer__title--m'))[0]]);
-        changeTextContent("Write me", [Array.from(document.querySelectorAll('.footer__title--m'))[1]]);
+        changeTextContent("For dear customer", [Array.from(document.querySelectorAll('.footer__title--m'))[1]]);
         // Настройки
         changeTextContent("Language:", [Array.from(document.querySelectorAll('.settings-popup__checkbox-name'))[0]]);
         changeTextContent("Theme:", [Array.from(document.querySelectorAll('.settings-popup__checkbox-name'))[1]]);
