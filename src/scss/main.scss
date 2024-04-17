@@ -79,11 +79,9 @@
                 background-repeat: no-repeat;
                 background-position: center;
                 // Анимация минифигурки
-                transition: transform 1s;
                 animation: minifigure-animation 5s infinite;
             }
         }
-
 
         // Левитирующие кубики навыков (3 штуки)
         &__bricks {
@@ -100,7 +98,6 @@
             background-repeat: no-repeat;
             background-position: right 10px top center;
             // Анимация левитации кубиков
-            transition: transform 1s;
             animation: bricks-levitation 5s infinite;
 
             // Кубик Sass
@@ -177,8 +174,13 @@
         }
     }
 
-    // Секция со скидкой
+    // Секция с портфолио
     &-2 {
+        background-color: #090727;
+    }
+
+    // Секция со скидкой
+    &-3 {
         color: $black;
 
         &__content {
@@ -188,7 +190,7 @@
         // Пузырь с текстом о скидке
         &__text-bubble {
             position: relative;
-            padding: 4% 4%;
+            padding: 4% 5%;
             margin-bottom: 12px;
             border-radius: 10px;
             border: 2px solid $black;

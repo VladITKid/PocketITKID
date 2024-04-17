@@ -256,23 +256,14 @@ const bottomNavBtnsArray = Array.from(document.querySelectorAll('.bottom-nav__bt
         applyRuLang();
     };
 
-    // Смена языков по переключению
-    langCheckbox.addEventListener('change', function() {
-        if (this.checked) {
-            applyEnLang();
-        } else {
-            applyRuLang();
-        }
-        // Сохраняем состояние чекбокса и языка
-        localStorage.setItem('langCheckboxState', langCheckbox.checked);
-        localStorage.setItem('currentLanguage', this.checked ? 'en' : 'ru');
-    });
-
     // Функция для упрощения изменения текстового содержимого элементов
     function changeTextContent(textElementContent, textElements) {
         // Прохожусь по всем элементам массива
         textElements.forEach(function(element) {
-            element.innerHTML = textElementContent;
+            // Проверяем, существует ли элемент
+            if (element) {
+                element.innerHTML = textElementContent;
+            }
         });
     };
     /*
@@ -297,8 +288,8 @@ const bottomNavBtnsArray = Array.from(document.querySelectorAll('.bottom-nav__bt
 
         // * Контент
         changeTextContent(
-            'Сэкономьте <b class="bold">40%</b> почасовой оплаты в первые <b class="bold">2 недели</b>!', 
-            [document.querySelector('.home-sect-2__text-bubble'), document.querySelector('.header__ad-text')]
+            'Получите купон и сэкономьте <b class="bold">40%</b> почасовой оплаты в первые <b class="bold">2 недели</b>!!', 
+            [document.querySelector('.home-sect-3__text-bubble'), document.querySelector('.header__ad-text')]
         );
     };
 
@@ -319,8 +310,20 @@ const bottomNavBtnsArray = Array.from(document.querySelectorAll('.bottom-nav__bt
 
         // * Контент
         changeTextContent(
-            'Сэкономьте <b class="bold">40%</b> почасовой оплаты в первые <b class="bold">2 недели</b>!', 
-            [document.querySelector('.home-sect-2__text-bubble'), document.querySelector('.header__ad-text')]
+            'Get the voucher and save <b class="bold">40%</b> on hourly rates in the first <b class="bold">2 weeks</b>!',
+            [document.querySelector('.home-sect-3__text-bubble'), document.querySelector('.header__ad-text')]
         );
     };
+    
+    // Смена языков по переключению
+    langCheckbox.addEventListener('change', function() {
+        if (this.checked) {
+            applyEnLang();
+        } else {
+            applyRuLang();
+        }
+        // Сохраняем состояние чекбокса и языка
+        localStorage.setItem('langCheckboxState', langCheckbox.checked);
+        localStorage.setItem('currentLanguage', this.checked ? 'en' : 'ru');
+    });
 })();
