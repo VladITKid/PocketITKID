@@ -1,0 +1,15 @@
+// Обнуление
+*,*::before,*::after{box-sizing:border-box;}
+::selection{background-color: $selection-bg;}
+ul,ol{margin: 0;padding:0;list-style:none;}
+html,body{height: 100%;}
+body,h1,h2,h3,h4,h5,h6,p,ul,ol,li{margin:0;padding:0;}
+body{background-color: var(--body-bg);scroll-behavior:smooth;text-rendering:optimizeSpeed;line-height:1.5;overflow:auto;}
+a{color:inherit;font-family:inherit;text-decoration:none;}
+img{max-width:100%;display:block;}
+input,button{outline:none;}
+input[type = "submit"],button,label{cursor: pointer;}
+input[type = "submit"],button{padding: 0; color: inherit; border: none; background-color: transparent;}
+input,button,textarea,select{font:inherit;}
+input[type="checkbox"],input[type="radio"]{display: none;}
+table{border-collapse: collapse;}

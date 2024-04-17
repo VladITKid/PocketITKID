@@ -1,0 +1,53 @@
+// * Colours
+// Monochrome
+$white: #f4f4f4;
+$black: #121212;
+// Colourful
+$yellow: #ffd900;
+$blue: #1e78b4;
+$green: #13ac58;
+$orange: #c98116;
+// Gradients
+// Other
+$selection-bg: #00000036;
+$btn-shine-color: #ffffff5d;
+
+// * Sizes
+// Devices' & Content's Width
+$laptopLarge: 1920px;
+$laptop: 1024px;
+$tablet: 768px;
+$mobile: 480px;
+$mobileSmall: 320px;
+$laptopLargeContent: 1280px;
+$laptopContent: 1000px;
+// Width of active device and content
+$theDeviceWidth: $mobileSmall; 
+$theDeviceContentWidth: $mobileSmall;
+
+// Navigation Elements' Sizes
+$headerHeight: 110px;
+$sidebarWidth: 10em;
+$bottomNavHeight: 80px;
+
+// Content Elements' Sizes
+$gameCoverHeight: 12px;
+$gameCoverWidth: 7px;
+
+// Цвета для тем
+:root {
+    // Для светлой темы
+    --body-bg__light-theme: #{$white};
+    --body-color__light-theme: #{$black};
+    --nav-bg__light-theme: #{$blue};
+
+    // Для тёмной темы
+    --body-bg__dark-theme: #183547;
+    --body-color__dark-theme: #{$white};
+    --nav-bg__dark-theme: #19394e;
+    
+    // Основные переменные цветов тем (значения по умолчанию)
+    --body-bg: var(--body-bg__light-theme);
+    --body-color: var(--body-color__light-theme);
+    --nav-bg: var(--nav-bg__light-theme);
+}

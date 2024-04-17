@@ -1,0 +1,180 @@
+// Стили для фиксированной навигации
+@mixin fixed-nav-styles($nav-height) {
+    font-size: .85rem;
+    font-weight: 600;
+    height: $nav-height;
+    width: 100%;
+    position: fixed;
+    z-index: 20;
+    color: $white;
+    background-color: var(--nav-bg);
+}
+
+// Стили сетки для шапки и секций
+@mixin sect-and-footer-grid() {
+    position: relative;
+    display: grid;
+	grid-template-columns: 
+		1fr 
+		$mobileSmall // * Content
+		1fr;
+}
+
+// Стили для кнопок смены страниц сайта
+@mixin active-page-btn-styles() {
+    color: $yellow;
+}
+
+// Стили для кнопок Главной страницы
+@mixin btn-raised-styles($first-color, $second-color) {
+    font-size: .85rem;
+    font-weight: 700;
+    padding: .6rem 1.4rem;
+    margin-bottom: 6px;
+    border-radius: 6px;
+    border: 2px solid $second-color;
+    box-shadow:
+        0 6px 0 0 $second-color,
+        0 6px 10px 0 $first-color;
+    text-shadow: 
+        0 2px 0 $second-color;
+    color: $white;
+    background-color: $first-color;
+    transition: 
+        color .3s,
+        text-shadow .3s,
+        background-color .3s,
+        box-shadow .3s,
+        transform .3s;
+        
+    &:hover {
+        box-shadow:
+            0 6px 0 0 $second-color,
+            0 6px 20px 0 $first-color;
+    }
+    &:active {
+        transform: translateY(6px);
+        box-shadow:
+            0 1px 0 0 $second-color,
+            0 1px 20px 0 $first-color;
+    }
+    &::selection {
+        background-color: transparent;
+    }
+}
+
+// Невидимое выделение
+@mixin invisible-selection() {
+    &::selection {
+        background-color: transparent;
+    }
+}
+
+// Стили для анимации сияющей кнопки
+@mixin shining-btn-mixin($color-1, $color-2, $color-3, $color-4, $color-5, $color-6, $color-7, $color-8, $color-9, $color-10) {
+    background-image: linear-gradient(
+        45deg,
+        $color-1 0% 10%,
+        $color-2 10% 20%,
+        $color-3 20% 30%,
+        $color-4 30% 40%,
+        $color-5 40% 50%,
+        $color-6 50% 60%,
+        $color-7 60% 70%,
+        $color-8 70% 80%,
+        $color-9 80% 90%,
+        $color-10 90% 100%
+    );
+}
+
+// Стили чекбоксов взависимости от состояния чекбокса
+@mixin settings-checkbox($state-name, $selector, $color-1, $color-2, $image-url) {
+    // Стили по умолчанию (1-е состояние)
+    @if $state-name == 1 {
+        &-checkmark {
+            &#{$selector} {
+                color: $color-2;
+                background-color: $color-1;
+        
+                // Текст состояния
+                &:before {
+                    position: absolute;
+                    text-transform: uppercase;
+                }
+                
+                // Кружочек
+                &::after {
+                    content: '';
+                    width: 2em;
+                    height: 2em;
+                    position: absolute;
+                    border-radius: 100%;
+                    background-image: url($image-url);
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    transition: margin-left .2s;
+                }
+        
+                // Задаю стили взависимости от селектора
+                @if $selector == '-lang' {
+                    &:before {
+                        content: 'ru';
+                        right: 1.4em;
+                    }
+                } @else if $selector == '-theme' {
+                    &:before {
+                        content: 'light';
+                        font-size: .9em;
+                        right: 1em;
+                        margin-top: 2px;
+                    }
+                    &::after {
+                        background-color: $color-2;
+                        background-size: 80%;
+                    }
+                }
+            }
+        }
+    }
+    // Стили для включённого чекбокса (2-е состояние)
+    @else if $state-name == 2 {
+        &-input {
+            &#{$selector}:checked + .settings-popup__checkbox {
+                .settings-popup__checkbox-checkmark {
+                    color: $color-2;
+                    background-color: $color-1;
+                
+                    // Текст состояния
+                    &:before {
+                        left: 1.2em;
+                    }
+                    
+                    // Кружочек
+                    &::after {
+                        margin-left: 4.1em;
+                        background-image: url($image-url);
+                    }
+        
+                    // Задаю стили взависимости от селектора
+                    @if $selector == '-lang' {
+                        &:before {
+                            content: 'en';
+                            right: 1.4em;
+                        }
+                    } @else if $selector == '-theme' {
+                        &:before {
+                            content: 'dark';
+                            font-size: .9em;
+                            left: 1em;
+                        }
+                        &::after {
+                            background-color: $color-2;
+                            background-size: 70%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

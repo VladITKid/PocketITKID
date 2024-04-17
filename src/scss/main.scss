@@ -1,0 +1,410 @@
+// * Common
+// Подключение общих стилей, шрифтов и переменных
+@import "_common/_fonts.scss";
+@import "_common/_vars.scss";
+@import "_common/_reset.scss";
+// Миксины
+@import "_common/_mixins.scss";
+// Основная сетка
+@import "_common/_grid.scss";
+// Анимация
+@import "_common/_animation.scss";
+// * Navigation
+// Стили для шапки, боковой панели и подвала
+@import "_nav.scss";
+
+// * Pages' content
+.main {
+    overflow: hidden;
+}
+// Жирные слова
+.bold {
+    font-weight: 800;
+}
+// * Pages
+.page {
+    &-home {}
+    &-portfolio {}
+    &-about {}
+}
+
+// * Titles
+.title {
+    --l {
+        font-size: 1.5rem !important;
+        font-weight: 700 !important;
+    }
+}
+
+// * Sections
+.sect {
+
+    // * Стили для всех секций и их элементов
+    
+    @include sect-and-footer-grid();
+
+    &__content {
+        font-size: .85rem;
+        font-weight: 600;
+        grid-column: 2;
+        padding: 2em 4%;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        color: var(--body-color);
+    }
+}
+
+// Отдельные секции каждой страницы
+
+.home-sect {
+    // Секция с приветствием
+    &-1 {
+        color: $black;
+        background-color: #6596e9;
+        &__content {
+            gap: 4em;
+            // Минифигурка
+            &::after {
+                content: '';
+                height: 240px;
+                width: 140px;
+                position: absolute;
+                top: 78px;
+                right: 80px;
+                background-image: url('/src/assets/img/itkid-minifigure.png');
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center;
+                // Анимация минифигурки
+                transition: transform 1s;
+                animation: minifigure-animation 5s infinite;
+            }
+        }
+
+
+        // Левитирующие кубики навыков (3 штуки)
+        &__bricks {
+            // Кубик JavaScript
+
+            height: 100px;
+            width: 100px;
+            position: absolute;
+            top: 180px;
+            right: 28px;
+            z-index: 2;
+            background-image: url('/src/assets/img/skill-brick-js.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: right 10px top center;
+            // Анимация левитации кубиков
+            transition: transform 1s;
+            animation: bricks-levitation 5s infinite;
+
+            // Кубик Sass
+            &::before {
+                content: '';
+                height: 80px;
+                width: 80px;
+                position: absolute;
+                top: -52px;
+                left: -165px;
+                transform: rotateZ(-12deg);
+                background-image: url('/src/assets/img/skill-brick-sass.png');
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: right 10px top center;
+            }
+            
+            // Кубик HTML
+            &::after {
+                content: '';
+                height: 80px;
+                width: 80px;
+                position: absolute;
+                top: -90px;
+                right: -4px;
+                transform: rotateZ(-18deg);
+                background-image: url('/src/assets/img/skill-brick-html.png');
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: right 10px top center;
+            }
+        }
+
+        // Пузырь с моей репликой
+        &__text-bubble {
+            padding: 4% 4%;
+            margin-top: 12em;
+            position: relative;
+            z-index: 2;
+            border-radius: 10px;
+            border: 2px solid $black;
+            box-shadow: 
+                2px 2px 0 0 $black,
+                2px 2px 10px 0 #00000070;
+            color: $black;
+            background-color: $white;
+            
+            // Треугольник
+            &::after {
+                content: '';
+                position: absolute;
+                top: -12px;
+                right: 20px;
+                width: 0;
+                height: 0;
+                border-left: 10px solid transparent;
+                border-right: 10px solid transparent;
+                border-bottom: 12px solid $white;
+            }
+
+            // Обводка треугольника
+            &::before {
+                content: '';
+                position: absolute;
+                bottom: -15px;
+                top: -15px;
+                right: 18px;
+                width: 0;
+                height: 0;
+                border-left: 12px solid transparent;
+                border-right: 12px solid transparent;
+                border-bottom: 14px solid $black;
+            }
+        }
+    }
+
+    // Секция со скидкой
+    &-2 {
+        color: $black;
+
+        &__content {
+            gap: 2em;
+        }
+
+        // Пузырь с текстом о скидке
+        &__text-bubble {
+            position: relative;
+            padding: 4% 4%;
+            margin-bottom: 12px;
+            border-radius: 10px;
+            border: 2px solid $black;
+            box-shadow: 
+                -2px 2px 0 0 $black,
+                -2px 2px 10px 0 #00000070;
+            color: $black;
+            background-color: $white;
+
+            // Треугольник
+            &::after {
+                content: '';
+                position: absolute;
+                bottom: -12px;
+                left: 20px;
+                width: 0;
+                height: 0;
+                border-left: 10px solid transparent;
+                border-right: 10px solid transparent;
+                border-top: 12px solid $white;
+            }
+
+            // Обводка треугольника
+            &::before {
+                content: '';
+                position: absolute;
+                bottom: -17px;
+                left: 18px;
+                width: 0;
+                height: 0;
+                border-left: 12px solid transparent;
+                border-right: 12px solid transparent;
+                border-top: 14px solid $black;
+            }
+        }
+
+        // Пояснение
+        &__explanation {
+            font-size: .7rem;
+        }
+    }
+}
+
+.about-sect {
+    // Секция обо мне
+    &-1 {
+        font-size: .8em;
+        height: 30em;
+        color: $black;
+        gap: 1em;
+    }
+
+    // Особенности
+    &-2 {
+        &__features-list {
+            font-size: .9em;
+            margin-top: 1rem;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 4px;
+            
+            &-item {
+                padding: 3em 4%;
+                display: flex;
+                text-align: center;
+                justify-content: center;
+                align-items: center;
+                border-radius: 6px;
+                color: $white;
+                background-color: $green;
+            }
+        }
+    }
+
+    // Навыки
+    &-3 {
+
+        &__skills-list {
+            font-size: .8em;
+            font-weight: 600;
+            margin-top: 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: .8em .5em;
+            
+            &-item {
+                padding: .4em 1.2em;
+                display: flex;
+                text-align: center;
+                align-items: center;
+                border-radius: 10em;
+                color: $blue;
+                background-color: transparent;
+                border: 2px solid $blue
+            }
+        }
+    }
+}
+
+.portfolio-sect {
+    // Секция с карточками портфолио
+    &-1 {
+        display: flex;
+        flex-direction: column;
+        
+        &__card {
+            position: relative;
+            display: grid;
+            grid-template-columns: 
+                1fr 
+                $mobileSmall // * Content
+                1fr;
+            
+            &-redhub-electronics {
+                color: $black;
+                background-color: #ffcc00;
+            }
+            &-pocket-itkid {
+                color: $white;
+                background-color: $blue;
+            }
+
+            &-content {
+                grid-column: 2;
+                display: flex;
+                flex-direction: column;
+            }
+
+            // Линии карточки
+            &-row {
+                &-1 {
+                    width: 100%;
+                    padding: 2em 4% 0 4%;
+                }
+                &-2 {
+                    width: 100%;
+                    padding: 2em 4%;
+                    display: grid;
+                    grid-template-columns: auto 1fr;
+                    grid-template-rows: 2rem 1rem;
+                    grid-column-gap: 1em;
+                    align-items: center;
+                }
+            }
+
+            &-video {
+                width: inherit;
+                border-radius: .4em;
+                border: 2px solid $black;
+            }
+
+            &-logo {
+                grid-column: 1;
+                grid-row: 1/3;
+                height: 3rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            &-title {
+                grid-column: 2;
+                grid-row: 1;
+                font-size: 1.2em;
+                font-weight: 600;
+            }
+
+            &-type {
+                grid-column: 2;
+                grid-row: 2;
+                font-size: .7em;
+                font-weight: 500;
+            }
+        }
+    }
+}
+
+// * Buttons
+.btn {
+
+    // * Для объёмных кнопок
+    &--raised {
+        // Неактивная
+        &-inactive {
+            filter: grayscale(.9);
+            pointer-events: none
+        }
+        // Белый
+        &-white {
+            @include btn-raised-styles(#dce7f7, #acc0ce);
+            color: #394851;
+        }
+        // Оранжевый
+        &-orange {
+            @include btn-raised-styles(#db8514, #c0571a);
+        }
+        // Зелёный
+        &-green {
+            @include btn-raised-styles(#1fc710, #239e13);
+        }
+        // Синий
+        &-blue {
+            @include btn-raised-styles($blue, #1835ab);
+        }
+        // Фиолетовый
+        &-violet {
+            @include btn-raised-styles(#750dec, #5113af);
+        }
+        // Малиновый
+        &-raspberry {
+            @include btn-raised-styles(#da128d, #af1373);
+        }
+    }
+
+    // * Для сияющих кнопок
+    &--shining {
+        animation: btn-shine 2 .5s;
+    }
+}

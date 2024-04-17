@@ -1,0 +1,31 @@
+.wrap {
+	display: grid;
+	min-height: 100%;
+	width: 100%;
+	grid-template-areas: 
+		"header"
+		"main"
+		"footer"
+		"bottom-nav";
+	grid-template-rows: 
+		$headerHeight // * Header
+		minmax(100vh, auto) // * Main
+		auto // * Footer
+		$bottomNavHeight; // * Bottom nav
+}
+.header {
+	grid-area: header;
+}
+.sidebar {
+	grid-area: sidebar;
+	display: none;
+}
+.main {
+	grid-area: main;
+}
+.footer {
+	grid-area: footer;
+}
+.bottom-nav {
+	grid-area: bottom-nav;
+}

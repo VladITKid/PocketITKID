@@ -1,0 +1,336 @@
+/*
+— — — — — — — — — — — — — 
+*                       Header
+— — — — — — — — — — — — — 
+*/
+.header {
+    @include fixed-nav-styles($headerHeight);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    &__ad {
+        font-size: .8em;
+        width: 100%;
+        height: 50px;
+        padding: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #30a625;
+
+
+        &-text {
+            text-align: center;
+        }
+    }
+
+    &__body {
+        width: $mobileSmall;
+        height: 60px;
+        padding: 0 1rem;
+        position: relative;
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        align-items: inherit;
+        
+        // Кнопка вызова меню
+        &-menu-btn {
+            grid-column: 3;
+            font-size: .57em;
+            font-weight: 700;
+            width: $headerHeight*.36;
+            height: $headerHeight*.36;
+            padding: 0 14%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 2px;
+            border: 2px solid $yellow;
+            border-radius: 4px;
+            text-transform: uppercase;
+
+            // Полоски для кнопки
+            &-line {
+                width: 100%;
+                height: 9px;
+                margin-top: 2px;
+                border-top: 2px solid $white;
+                border-bottom: 2px solid $white;
+            }
+        }
+    }
+
+    // Логотип
+    &__logo {
+        grid-column: 1;
+        // width: $headerHeight*.7;
+        height: $headerHeight*.4;
+        border-radius: 4px;
+        cursor: pointer;
+        @include invisible-selection();
+    }
+
+    // Фиксированное меню
+    &__menu {
+        position: fixed;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        top: $headerHeight;
+        bottom: $bottomNavHeight;
+        background-color: #000e2cb4;
+        backdrop-filter: blur(5px);
+        transition: right .25s;
+        
+        // Сотстояния меню
+        &--active {
+            right: 0;
+            z-index: 20;
+        }
+        &--inactive {
+            right: -100%;
+            z-index: -100;
+        }
+
+        &-btns {
+            width: $mobileSmall;
+            display: inherit;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        // Кнопки
+        &-btn {
+            font-size: 1.2em;
+            width: 100%;
+            height: 3.5em;
+            padding: 0 4%;
+            display: inherit;
+            justify-content: flex-start;
+            align-items: center;
+
+            &:nth-child(odd) {
+                background-color: #0000002c;
+            }
+
+            &--active {
+                @include active-page-btn-styles();
+            }
+        }
+    }
+}
+/*
+— — — — — — — — — — — — — 
+*                       Sidebar
+— — — — — — — — — — — — — 
+*/
+.sidebar {
+
+}
+/*
+— — — — — — — — — — — — — 
+*                       Footer
+— — — — — — — — — — — — — 
+*/
+.footer {
+    font-size: .85rem;
+    line-height: 1.4;
+    @include sect-and-footer-grid();
+    grid-template-rows: auto 3em;
+    color: $white;
+    background-color: #303c44;
+    
+    &__body {
+        grid-column: 2;
+        grid-row: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    // Заголовки
+    &__title {
+        &--l {
+            padding: 2em 4% 1em 4%;
+        }
+        &--m {
+            font-size: 1em;
+            font-weight: 700;
+            height: inherit;
+            display: flex;
+            align-items: center;
+        }
+    }
+
+    // Списки
+    &__lists {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+        &__list {
+            display: flex;
+            flex-direction: column;
+
+            &:nth-child(3) {
+                grid-column: 1/3;
+            }
+
+            // Элемент списка
+            &-item {
+                font-weight: 500;
+                height: 3.5em;
+                padding: 0 1em;
+            }
+        }
+
+    // Ссылки
+    &__link {
+        height: inherit;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        color: #2798e4;
+    }
+    
+    // Копирайт
+    &__copy {
+        grid-column: 1/4;
+        grid-row: 2;
+        font-size: .85em;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: $orange;
+    }
+}
+/*
+— — — — — — — — — — — — — 
+*                   Bottom nav
+— — — — — — — — — — — — — 
+*/
+.bottom-nav {
+    @include fixed-nav-styles($bottomNavHeight);
+	padding: 0 4%;
+    display: flex;
+    gap: 1em;
+    bottom: 0;
+
+    // Кнопки
+    &__btn {
+        font-size: .85em;
+        width: 100%;
+        padding-top: 2.5em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-size: 2.8em;
+        background-repeat: no-repeat;
+        background-position: center top 13px;
+
+        &--active {
+            @include active-page-btn-styles();
+        }
+
+        // * Для отдельных кнопок
+
+        &-home{
+            background-image: url('/src/assets/svg/home.svg');
+            background-size: 3em;
+        }
+
+        &-portfolio{
+            background-image: url('/src/assets/img/Itkid.png');
+        }
+
+        &-about{
+            background-image: url('/src/assets/img/Itkid.png');
+        }
+
+        &-settings{
+            background-image: url('/src/assets/svg/settings.svg');
+        }
+    }
+}
+
+// * Окошко настроек
+
+.settings-popup {
+    position: fixed;
+    right: 4%;
+    bottom: $bottomNavHeight+24px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-auto-rows: 2.5rem*1.6;
+    align-items: center;
+    border-radius: .2em;
+    box-shadow: 0 0 1em 0 #00000048;
+    color: $white;
+    background-color: var(--nav-bg);
+    transition: opacity .4s;
+
+    // Состояния окошка с настройками
+    &--active {
+        opacity: 1;
+        z-index: 20;
+    }
+    &--inactive {
+        opacity: 0;
+        z-index: -100;
+    }
+
+    // Треугольник
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: -12px;
+        right: 20px;
+        width: 0;
+        height: 0;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-top: 12px solid var(--nav-bg);
+    }
+    
+    &__checkbox {
+        height: 4em;
+        padding: 0 1.2rem 0 1em;
+        display: flex;
+        align-items: center;
+        gap: .8em;
+
+        &-name {
+            grid-column: 1;
+            font-size: .9em;
+            font-weight: 600;
+            padding-left: 1.2rem;
+        }
+        // Кастомный переключатель
+        &-checkmark {
+            grid-column: 2;
+            font-size: .8rem;
+            font-weight: 700;
+            width: 7.2em;
+            height: 2.5rem;
+            padding: .4em;
+            position: relative;
+            display: flex;
+            align-items: center;
+            border-radius: 10em;
+            border: .2em solid var(--nav-bg);
+            box-shadow: 
+                inset 0 1px 0 1px #00000050,
+                0 1px 0 1px #00000050;
+            transition: 
+                background-color .2s;
+        }
+        @include settings-checkbox(1, '-lang', #2136a0, $white, '/src/assets/img/ru-lang.png');
+        @include settings-checkbox(2, '-lang', #2c1978, $white, '/src/assets/img/en-lang.png');
+        @include settings-checkbox(1, '-theme', $white, $black, '/src/assets/img/light-theme.png');
+        @include settings-checkbox(2, '-theme', $black, $white, '/src/assets/img/dark-theme.png');
+    }
+}
