@@ -288,7 +288,7 @@ const bottomNavBtnsArray = Array.from(document.querySelectorAll('.bottom-nav__bt
 
         // * Контент
         changeTextContent(
-            'Получите купон и сэкономьте <b class="bold">40%</b> почасовой оплаты в первые <b class="bold">2 недели</b>!!', 
+            'Получите купон и сэкономьте <b class="bold">40%</b> почасовой оплаты в первые <b class="bold">2 недели</b>!', 
             [document.querySelector('.home-sect-3__text-bubble'), document.querySelector('.header__ad-text')]
         );
     };
