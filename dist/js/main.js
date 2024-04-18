@@ -286,11 +286,28 @@ const bottomNavBtnsArray = Array.from(document.querySelectorAll('.bottom-nav__bt
         changeTextContent("Язык:", [Array.from(document.querySelectorAll('.settings-popup__checkbox-name'))[0]]);
         changeTextContent("Тема:", [Array.from(document.querySelectorAll('.settings-popup__checkbox-name'))[1]]);
 
-        // * Контент
+        /* 
+        *   Контент
+        */
+       // * Главная
+       // Секция с приветствием
+        changeTextContent("Добро пожаловать!", [document.querySelector('.home-sect-1 .title--l')]);
+        changeTextContent(
+            "Привет, я Влад, давайте узнаем кто я такой и что я умею! Скучно не будет, начнём?", 
+            [document.querySelector('.home-sect-1__text-bubble')]
+        );
+        changeTextContent("Изучить кандидата", [document.querySelector('.home-sect-1 button')]);
+        // Секция со скидкой
+        changeTextContent("Скидка за скачивание", [document.querySelector('.home-sect-3 .title--l')]);
         changeTextContent(
             'Получите купон и сэкономьте <b class="bold">40%</b> почасовой оплаты в первые <b class="bold">2 недели</b>!', 
             [document.querySelector('.home-sect-3__text-bubble'), document.querySelector('.header__ad-text')]
         );
+        changeTextContent("Получить купон*", [document.querySelector('.home-sect-3 button')]);
+        changeTextContent("*Для получения скидки покажите купон исполнителю.", [document.querySelector('.home-sect-3__explanation')]);
+       // * Портфолио
+        changeTextContent("Многостраничный магазин", [Array.from(document.querySelectorAll('.portfolio-sect-1__card-type'))[0]]);
+        changeTextContent("WebView приложение", [Array.from(document.querySelectorAll('.portfolio-sect-1__card-type'))[1]]);
     };
 
     function applyEnLang() {
@@ -308,11 +325,28 @@ const bottomNavBtnsArray = Array.from(document.querySelectorAll('.bottom-nav__bt
         changeTextContent("Language:", [Array.from(document.querySelectorAll('.settings-popup__checkbox-name'))[0]]);
         changeTextContent("Theme:", [Array.from(document.querySelectorAll('.settings-popup__checkbox-name'))[1]]);
 
-        // * Контент
+        /* 
+        *   Контент
+        */
+       // * Главная
+        // Секция с приветствием
+        changeTextContent("Welcome, my friend!", [document.querySelector('.home-sect-1 .title--l')]);
+        changeTextContent(
+            "Hallo, my name's Vlad. Let's know me and my skills! Are you ready?", 
+            [document.querySelector('.home-sect-1__text-bubble')]
+        );
+        changeTextContent("Get started", [document.querySelector('.home-sect-1 button')]);
+        // Секция со скидкой
+        changeTextContent("Discount for downloading", [document.querySelector('.home-sect-3 .title--l')]);
         changeTextContent(
             'Get the voucher and save <b class="bold">40%</b> on hourly rates in the first <b class="bold">2 weeks</b>!',
             [document.querySelector('.home-sect-3__text-bubble'), document.querySelector('.header__ad-text')]
         );
+        changeTextContent("Get the voucher*", [document.querySelector('.home-sect-3 button')]);
+        changeTextContent("*To receive the discount, show the coupon to the performer.", [document.querySelector('.home-sect-3__explanation')]);
+        // * Портфолио
+        changeTextContent("Multipage store", [Array.from(document.querySelectorAll('.portfolio-sect-1__card-type'))[0]]);
+        changeTextContent("WebView app", [Array.from(document.querySelectorAll('.portfolio-sect-1__card-type'))[1]]);
     };
     
     // Смена языков по переключению

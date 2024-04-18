@@ -201,11 +201,12 @@
         grid-column: 1/4;
         grid-row: 2;
         font-size: .85em;
-        font-weight: 500;
+        font-weight: 700;
         display: flex;
         align-items: center;
         justify-content: center;
-        background-color: $orange;
+        color: var(--nav-bg);
+        background-color: $yellow;
     }
 }
 /*
